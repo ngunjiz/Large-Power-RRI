@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Download Page</title>
+  <link rel="stylesheet" href="styles.css">
+<style>
+    .container {
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 30px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      text-align: center;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    select {
+      width: 100%;
+      padding: 8px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .submit-button {
+      display: inline-block;
+      padding: 8px 2px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      text-decoration: none;
+    }
+
+    .submit-button:hover {
+      background-color: #0056b3;
+    }
+    @media screen and (max-width: 600px) {
+      .container {
+        margin: 20px auto;
+        padding: 10px;
+      }
+
+      input[type="text"],
+      input[type="number"],
+      select {
+        width: calc(100% - 20px); /* Adjust input width for smaller screens */
+      }
+
+      .submit-button {
+        width: 100%; /* Make submit button full width on smaller screens */
+      }
+  </style>
+</head>
+<body>
+  <h2>Download Data</h2>
+  <p>Click the button below to download the data:</p>
+  <button id="downloadButton">Download Data</button>
+
+  <script>
+    document.getElementById("downloadButton").addEventListener("click", function() {
+      // Fetch the data from the server using AJAX
+      fetch("fetch_data.php")
+      .then(response => response.blob())
+      .then(blob => {
+        // Create a temporary URL for the data blob
+        const url = window.URL.createObjectURL(blob);
+
+        // Create a link element and trigger the download
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "data.csv"; // Specify the filename
+        document.body.appendChild(a);
+        a.click();
+
+        // Cleanup
+        window.URL.revokeObjectURL(url);
+        document.body.removeChild(a);
+      })
+      .catch(error => {
+        console.error("Error:", error);
+        alert("An error occurred while downloading the data.");
+      });
+    });
+  </script>
+</body>
+</html>

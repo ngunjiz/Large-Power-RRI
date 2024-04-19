@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Large Power RRI Form</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+	.container {
+  	max-width: 600px;
+  	margin: 50px auto;
+  	padding: 30px;
+  	border: 1px solid #ccc;
+  	border-radius: 5px;
+  	background-color: #f9f9f9;
+	}
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      text-align: left;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    select {
+      width: 100%;
+      padding: 8px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    input[type="checkbox"] {
+      margin-right: 5px;
+    }
+
+    .submit-button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      text-decoration: none;
+    }
+
+    .submit-button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Large Power RRI Form</h2>
+    <form id="largePowerForm" action="submit.php" method="post">
+      <div class="form-group">
+        <label for="region">Region:</label>
+        <select id="region" name="region">
+          	<option value="region">Select Region</option>
+            	<option value="Mt.Kenya">Mt. Kenya</option>
+     		<option value="North Eastern">North Eastern</option>
+      		<option value="South Nyanza">South Nyanza</option>
+      		<option value="West Kenya">West Kenya</option>
+      		<option value="West Kenya">West Kenya</option>
+      		<option value="Coast">Coast</option>
+      		<option value="North Rift">North Rift</option>
+      		<option value="Central Rift">Central Rift</option>
+      		<option value="Central Office">Central Office</option>
+          <!-- Add more regions as needed -->
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="county">County:</label>
+        <input type="text" id="county" name="county" required>
+      </div>
+      <div class="form-group">
+        <label for="customerName">Customer Name:</label>
+        <input type="text" id="customerName" name="customerName" required>
+      </div>
+      <div class="form-group">
+        <label for="meterNumber">Meter Number:</label>
+        <input type="number" id="meterNumber" name="meterNumber" required>
+      </div>
+      <div class="form-group">
+        <label>Type of Metering:</label><br>
+        <div class="radio-group">
+          <input type="radio" id="poleMounted" name="meteringType" value="Pole Mounted">
+          <label for="poleMounted">Pole Mounted</label><br>
+          <input type="radio" id="groundMounted" name="meteringType" value="Ground Mounted">
+          <label for="groundMounted">Ground Mounted</label>
+        </div>
+      </div>
+      <div class="form-group">
+      <label>Seals Available:</label><br>
+       <div class="radio-group">
+       <input type="radio" id="sealsYes" name="sealsAvailable" value="Yes">
+       <label for="sealsYes">Yes</label><br>
+       <input type="radio" id="sealsNo" name="sealsAvailable" value="No">
+       <label for="sealsNo">No</label>
+     </div>
+
+     <div class="form-group" id="sealSerialNumberField" style="display: none;">
+      <label for="sealSerialNumber">Seal Serial Number:</label>
+      <input type="text" id="sealSerialNumber" name="sealSerialNumber">
+    </div>
+
+      </div>
+
+      <div class="form-group">
+        <label>Meter Reading if Available:</label><br>
+        <div class="radio-group">
+          <input type="radio" id="ReadingYes" name="ReadingAvailable" value="Yes">
+          <label for="ReadingYes">Available</label><br>
+          <input type="radio" id="ReadingNo" name="ReadingNotAvailable" value="No">
+          <label for="ReadingNo">Not Available</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="pictorial">Pictorial:</label>
+        <label for="pictorial" class="file-label">Choose a file...</label>
+        <input type="file" id="pictorial" name="pictorial" accept="image/*">
+        <div class="file-preview" id="filePreview"></div>
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
